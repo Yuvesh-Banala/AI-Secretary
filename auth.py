@@ -9,6 +9,7 @@ import os
 import json
 import base64
 from parsing import parse_emails
+from ranker import rank_emails
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
@@ -72,8 +73,13 @@ def profile():
     service = build('gmail', 'v1', credentials=creds)
     user_info = service.users().getProfile(userId='me').execute()
     parsed_emails = parse_emails(creds)
+
+    ranked_emails = rank_emails(parsed_emails)
+
     #print out in html for now
     html = ""
+    html = "<h2>🔢 Raw LLM Ranking Output:</h2><pre>"
+    html += f"{ranked_emails}</pre><hr>"
     for email in parsed_emails:
         html += f"<h2>Body Summary:</h2><pre>{email['summary']}</pre><hr>"
         html += f"<h2>Subject:</h2><p>{email['subject']}</p>"
