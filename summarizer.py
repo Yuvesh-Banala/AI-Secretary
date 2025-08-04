@@ -43,7 +43,22 @@ def summarize_text(plain_body):
         messages=[
             {
                 "role": "system",
-                "content": "You are an assistant that summarizes briefly summarizes emails, including but not limited to upcoming meetings, dates, assignments, and news."
+                "content": """You are an assistant that processes email content.
+                    Given an email, return a short summary and determine if a response is needed.
+                    Only include it near the body summary
+
+                    Reply Code Legend:
+                    - 0 = No reply needed
+                    - 1 = Reply is needed
+                    - 2 = Urgent reply required
+
+                    Respond in **this exact JSON format**:
+                    {
+                    "reply_code": 0
+                    "summary": "...",
+                    
+                    }
+                    """
             },  
             {
                 "role": "user",
@@ -54,3 +69,5 @@ def summarize_text(plain_body):
         max_tokens=256
     )
     return completion.choices[0].message.content.strip()
+
+
