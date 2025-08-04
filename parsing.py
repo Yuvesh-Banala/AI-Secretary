@@ -61,6 +61,7 @@ def parse_emails(creds, timeframe = '1d', max_results = 3):
             'summary': summary
         })
     
+    
     return email_list
 
 def clean_html(html):
