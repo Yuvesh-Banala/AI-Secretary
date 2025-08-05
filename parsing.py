@@ -3,6 +3,7 @@ from googleapiclient.discovery import build
 import re
 from bs4 import BeautifulSoup
 from summarizer import summarize_text
+from reply import checkreply
 
 def parse_emails(creds, timeframe = '1d', max_results = 3):
     """Fetches and parses emails within a given timeframe. It will return a list of emails
@@ -51,14 +52,17 @@ def parse_emails(creds, timeframe = '1d', max_results = 3):
 
         # Summarize the plain text body (if it exists)
         summary = summarize_text(body_plain) if body_plain else "No summary available."
-        
+        #check whether a response is needed or not
+        reply = checkreply(summary, subject, sender)
+
         email_list.append({
-            'subject': subject,
-            'sender': sender,
-            'date': date,
-            'body': body,
+            'subject'   : subject,
+            'sender'    : sender,
+            'date'      : date,
+            'body'      : body,
             'body_plain': body_plain,
-            'summary': summary
+            'summary'   : summary,
+            'reply'     : reply
         })
     
     

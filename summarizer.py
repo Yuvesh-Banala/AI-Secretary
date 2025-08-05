@@ -54,8 +54,8 @@ def summarize_text(plain_body):
 
                     Respond in **this exact JSON format**:
                     {
-                    "reply_code": 0
-                    "summary": "...",
+                    Reply Code: x, 
+                    Summary: "...",
                     
                     }
                     """
@@ -69,5 +69,6 @@ def summarize_text(plain_body):
         max_tokens=256
     )
     return completion.choices[0].message.content.strip()
+
 
 

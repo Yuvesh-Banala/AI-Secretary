@@ -82,6 +82,7 @@ def profile():
     html += f"{ranked_emails}</pre><hr>"
     for email in parsed_emails:
         html += f"<h2>Body Summary:</h2><pre>{email['summary']}</pre><hr>"
+        html += f"<h2>Reply:</h2><pre>{email['reply']}</pre><hr>"
         html += f"<h2>Subject:</h2><p>{email['subject']}</p>"
         html += f"<h2>Sender:</h2><p>{email['sender']}</p>"
         html += f"<h2>Date:</h2><p>{email['date']}</p>"
