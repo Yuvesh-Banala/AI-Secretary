@@ -25,12 +25,12 @@ August 3rd, 2025
 After finishing step 5 (ranker.py file), we moved onto the next step where it can draft simple responses and email back. 
 We are avoiding checking the entire context for now, and just focusing on simple drafts
 Goal:
-# v1 of this file will essentially check if the emails it accessed require a response
-# if so, the file will draft an appropriate/professional response (assuming the context)
-# This file will also need to prompt the user back some deterministic questions regarding the context
-# i.e. it could ask whether "you" can go ahead with the interview, whether "you" can finalize the date
+1. v1 of this file will essentially check if the emails it accessed require a response
+2. If so, the file will draft an appropriate/professional response (assuming the context)
+3. This file will also need to prompt the user back some deterministic questions regarding the context
+     i.e. it could ask whether "you" can go ahead with the interview, whether "you" can finalize the date
 The second list in the response from the rank_emails function will have its locations directly corresponding to the most recently received email to the last. 
-For example email x, y, z have been received (x being the earliest and z being the last). The rankings could be [0, 2, 1], making the most relevant email the email which was received most recently (email x) corresponding to a label of 0.
+For example, email x, y, z have been received (x being the earliest and z being the last). The rankings could be [0, 2, 1], making the most relevant email the email which was received most recently (email x) corresponding to a label of 0.
 Now to determine which emails require a reply or not, the list will simply be determined in the same way the AI views them x, y, z. A possible reply list could be [1, 0 , 0], meaning email x requires further attention because it needs a response. 
 
 August 6th, 2025
