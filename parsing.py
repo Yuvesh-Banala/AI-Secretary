@@ -16,6 +16,7 @@ def parse_emails(creds, timeframe = '1d', max_results = 3):
     
     messages = results.get('messages', [])
     email_list = []
+    Email_ID = 0
     
     for msg_meta in messages:
         msg_id = msg_meta['id']
@@ -56,6 +57,7 @@ def parse_emails(creds, timeframe = '1d', max_results = 3):
         reply = checkreply(summary, subject, sender)
 
         email_list.append({
+            'email ID'  : Email_ID,
             'subject'   : subject,
             'sender'    : sender,
             'date'      : date,
@@ -64,7 +66,7 @@ def parse_emails(creds, timeframe = '1d', max_results = 3):
             'summary'   : summary,
             'reply'     : reply
         })
-    
+        Email_ID += 1
     
     return email_list
 

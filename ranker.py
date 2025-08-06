@@ -46,4 +46,17 @@ def rank_emails(email_list):
         temperature=0.3,
         max_tokens=256
     )
-    return completion.choices[0].message.content.strip()
+    string_List = completion.choices[0].message.content.strip()
+    ranked_order = []
+    num = ""
+    for a in string_List:
+        if a.isdigit():
+            num += a
+        elif num:
+            ranked_order.append(int(num))
+            num = ""
+    
+    if num:
+        ranked_order.append(int(num))
+        
+    return ranked_order

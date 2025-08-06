@@ -48,9 +48,9 @@ def summarize_text(plain_body):
                     Only include it near the body summary
 
                     Reply Code Legend:
-                    - 0 = No reply needed
-                    - 1 = Reply is needed
-                    - 2 = Urgent reply required
+                    - 0 = No reply needed. Sender isn't asking questions or looking for information. 
+                    - 1 = Reply is needed. Sender asked question or needs information.
+                    - 2 = Urgent reply required. Sender asked question or needs information. Asked for urgent response.
 
                     Respond in **this exact JSON format**:
                     {
